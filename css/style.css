@@ -1,0 +1,217 @@
+/* --- GLOBAL STYLES & RESET --- */
+:root {
+    --sidebar-width: 60px;
+    --primary-text: #111;
+    --secondary-text: #767676;
+    --border-color: #d1d1d1;
+    --background-color: #fff;
+    --hover-bg: #f5f5f5;
+    --box-bg: #fafafa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--primary-text);
+    background-color: var(--background-color);
+    display: flex;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* --- VERTICAL SIDEBAR --- */
+.vertical-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    left: 0; top: 0;
+    background-color: var(--background-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    z-index: 100;
+}
+.logo-icon { margin-bottom: 20px; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 10px; }
+.sidebar-link { padding: 8px; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.sidebar-link svg { fill: var(--secondary-text); }
+.sidebar-link:hover { background-color: var(--hover-bg); }
+.sidebar-link.active svg { fill: var(--primary-text); }
+
+/* --- LAYOUT WRAPPERS --- */
+.main-content-wrapper { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); }
+.container { max-width: 1336px; margin: 0 auto; padding: 0 24px; }
+
+/* --- MAIN HEADER --- */
+.main-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 24px; gap: 20px; }
+.header-logo-search { display: flex; align-items: center; flex-grow: 1; gap: 15px; }
+.search-bar { flex-grow: 1; }
+.search-bar input { width: 100%; padding: 12px 16px; border-radius: 24px; border: 1px solid transparent; background-color: #eee; font-size: 14px; }
+.search-bar input:focus { background-color: #fff; border-color: #999; outline: none; }
+.header-nav { display: flex; align-items: center; gap: 20px; color: var(--secondary-text); }
+.header-nav a:hover { color: var(--primary-text); }
+.submit-btn { background-color: #fff; color: var(--secondary-text); border: 1px solid var(--border-color); padding: 8px 11px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+.submit-btn:hover { border-color: var(--primary-text); }
+.hamburger-menu { display: none; }
+
+/* --- SECONDARY NAVIGATION --- */
+.secondary-nav { display: flex; align-items: center; gap: 25px; padding: 20px 0; border-bottom: 1px solid var(--border-color); overflow-x: auto; }
+.secondary-nav a { color: var(--secondary-text); font-weight: 600; white-space: nowrap; }
+.secondary-nav a.active { color: var(--primary-text); }
+.secondary-nav sup { color: #007fff; }
+
+/* --- PHOTOS PAGE: HERO --- */
+.photos-hero {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 300px 300px;
+    gap: 24px;
+    padding: 60px 0;
+    align-items: start;
+    justify-content: center;
+}
+.hero-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 24px;
+}
+.hero-text-content h1 { font-size: 46px; font-weight: 700; margin: 0; }
+.hero-text-content p { font-size: 18px; margin: 0; line-height: 1.6; }
+.supported-by { font-size: 15px !important; color: var(--secondary-text); }
+.hero-search-bar { margin-top: 10px; }
+.hero-search-bar input { width: 100%; padding: 18px 20px; border-radius: 4px; border: 1px solid var(--border-color); font-size: 16px; }
+
+/* Promo boxes styling */
+.promo-box { border-radius: 4px; }
+.promo-box.awards-promo {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+}
+.promo-box.awards-promo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.promo-box.plus-promo {
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    padding: 20px;
+}
+.plus-promo h3 { font-size: 18px; }
+.plus-promo p { font-size: 15px; color: var(--secondary-text); margin-top: 8px; }
+.plus-promo button { margin-top: 15px; background-color: var(--primary-text); color: #fff; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+
+/* --- ILLUSTRATIONS PAGE: HERO GRID --- */
+.illustrations-hero { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 30px 0; }
+.single-image-promo { border-radius: 8px; overflow: hidden; }
+.single-image-promo img { width: 100%; height: 100%; object-fit: cover; }
+.info-box { border: 1px solid var(--border-color); background-color: var(--box-bg); padding: 20px; border-radius: 8px; height: 100%;}
+.collections-box h4 { font-size: 16px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+.collections-box .see-all { font-size: 14px; color: var(--secondary-text); }
+.collections-box ul { list-style: none; }
+.collections-box li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; cursor: pointer; }
+.collections-box li img { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; }
+.collections-box li strong { font-size: 14px; }
+.collections-box li span { display: block; font-size: 12px; color: var(--secondary-text); }
+.related-searches-box { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }
+.related-searches-box .tag { padding: 8px 10px; border: 1px solid var(--border-color); background-color: #fff; border-radius: 4px; font-size: 14px; cursor: pointer; }
+.related-searches-box a { width: 100%; margin-top: 10px; font-size: 14px; }
+
+/* ======================================= */
+/* === CRITICAL FIX FOR ILLUSTRATION BOX === */
+/* ======================================= */
+
+/* The parent box no longer needs special layout rules */
+.featured-collection-box {
+    /* Styles inherited from .info-box are enough */
+}
+
+/* Style the NEW text wrapper div */
+.collection-info {
+    margin-top: 15px; /* This creates the space between the images and the text */
+}
+.collection-info h4 {
+    font-size: 16px;
+}
+.collection-info p {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-top: 4px;
+}
+
+/* The image stack layout remains the same */
+.featured-collection-box .image-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    height: 160px;
+}
+.featured-collection-box .image-stack img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.featured-collection-box .image-stack img:nth-child(1) {
+    grid-row: 1 / span 2;
+}
+.featured-collection-box .image-stack img:nth-child(2) {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+.featured-collection-box .image-stack img:nth-child(3) {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+/* --- SHARED IMAGE GRID SECTION --- */
+.image-grid-section { padding: 30px 0; }
+.image-grid { column-count: 3; column-gap: 24px; }
+.grid-item { margin-bottom: 24px; display: inline-block; width: 100%; }
+.grid-item img { width: 100%; border-radius: 8px; display: block; }
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1200px) {
+    .image-grid { column-count: 2; }
+    .illustrations-hero { grid-template-columns: 1fr 1fr; }
+    .photos-hero { grid-template-columns: 1fr 300px; gap: 24px;}
+    .hero-text-content { grid-column: 1 / span 1; margin-right: 0;}
+    .promo-box.awards-promo { grid-column: 2 / span 1; height: auto;}
+    .promo-box.plus-promo {
+        grid-column: 2 / span 1;
+        margin-top: 24px;
+        height: auto;
+    }
+}
+@media (max-width: 992px) {
+    .photos-hero { grid-template-columns: 1fr; }
+    .hero-text-content { text-align: center; }
+    .hero-text-content, .promo-box.awards-promo, .promo-box.plus-promo {
+        grid-column: 1 / -1;
+        margin-right: 0;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-search-bar { max-width: 100%; }
+    .promo-box.plus-promo { margin-top: 24px; }
+}
+@media (max-width: 768px) {
+    body { display: block; }
+    .vertical-sidebar { display: none; }
+    .main-content-wrapper { margin-left: 0; width: 100%; }
+    .container, .main-header { padding: 0 15px; }
+    .header-logo-full { display: none; }
+    .header-nav { display: none; }
+    .hamburger-menu { display: block; background: none; border: none; font-size: 24px; cursor: pointer; }
+    .illustrations-hero { grid-template-columns: 1fr; }
+    .image-grid { column-count: 1; }
+}
